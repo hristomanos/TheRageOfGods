@@ -30,6 +30,9 @@ public class PickUp : MonoBehaviour
 
             //4.Disable gravity
             collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
+
+            //5.Change layer to "Weapon" to make Culling mask work
+            collision.gameObject.layer = LayerMask.NameToLayer("Weapon");
         }
     }
     
