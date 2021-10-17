@@ -6,13 +6,13 @@ public class Shoot : MonoBehaviour
 {
 
     [SerializeField] GameObject m_WeaponPrefab;
+    [SerializeField] Transform m_SpawningPoint;
     [SerializeField] float m_Force;
 
     Rigidbody m_WeaponRigidbody;
     SphereCollider m_WeaponSphereCollider;
     PickUp m_PickUpScript;
 
-    [SerializeField] Transform m_SpawningPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -30,36 +30,37 @@ public class Shoot : MonoBehaviour
         //Shoot
         if (Input.GetMouseButton(0))
         {
-            if (m_PickUpScript.GetIsPickedUp())
+            if (m_PickUpScript.GetIsHolding())
             { 
-                //1.Reset flag
-                m_PickUpScript.SetIsPickeUp(false);
+                //Reset flag
+                m_PickUpScript.SetIsHolding(false);
 
-                //2.Free the ball from being a child of camera
+                //Free the ball from being a child of camera
                 m_WeaponPrefab.transform.parent = null;
 
-                //3.Enable gravity
+                //Enable gravity
                 m_WeaponRigidbody.useGravity = true;
 
-                //4.Change layer back to "Default"
+                //Change layer back to "Default"
                 m_WeaponPrefab.layer = LayerMask.NameToLayer("Default");
                
-                //6.Shoot dodgeball
-                m_WeaponRigidbody.AddForce(m_WeaponPrefab.transform.forward * m_Force, ForceMode.Impulse);
+                //Shoot dodgeball
+                m_WeaponRigidbody.AddForce(Camera.main.transform.forward * m_Force, ForceMode.Impulse);
                 
-                //5.Disable trigger collider
+                //Disable trigger collider
                 m_WeaponSphereCollider.isTrigger = false;
                 
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && !m_PickUpScript.GetIsPickedUp())
+        if (Input.GetKeyDown(KeyCode.R) && !m_PickUpScript.GetIsHolding())
         {
             ResetBall();
         }
 
 
     }
+
     void ResetBall()
     {
         //Reset rotation
@@ -71,7 +72,7 @@ public class Shoot : MonoBehaviour
         //Make the ball a child of the camera
         m_WeaponPrefab.gameObject.transform.parent = Camera.main.transform;
         
-        //2. Place the ball at the spawning point
+        //Place the ball at the spawning point
         m_WeaponPrefab.gameObject.transform.position = new Vector3(m_SpawningPoint.position.x, m_SpawningPoint.position.y, m_SpawningPoint.position.z);
 
         //Enable trigger collider
@@ -84,7 +85,7 @@ public class Shoot : MonoBehaviour
         m_WeaponPrefab.gameObject.layer = LayerMask.NameToLayer("Weapon");
 
         //Flag isPicked
-        m_PickUpScript.SetIsPickeUp(true);
+        m_PickUpScript.SetIsHolding(true);
     }
 
 }
