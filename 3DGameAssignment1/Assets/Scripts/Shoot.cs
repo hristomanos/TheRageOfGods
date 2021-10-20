@@ -41,7 +41,7 @@ public class Shoot : MonoBehaviour
                 //Enable gravity
                 m_WeaponRigidbody.useGravity = true;
 
-                //Change layer back to "Default"
+                //Change layer back to "Default" to allow 
                 m_WeaponPrefab.layer = LayerMask.NameToLayer("Default");
                
                 //Shoot dodgeball
