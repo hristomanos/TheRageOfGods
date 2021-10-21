@@ -10,9 +10,9 @@ public class ThrowSpell : MonoBehaviour
     [SerializeField] Animator m_WandAnimator;
 
     [SerializeField] float m_Damage;
-
- 
-    
+    [SerializeField] Camera m_Cam;
+    [SerializeField] float projectileSpeed;
+    Vector3 m_Destination; 
 
     // Update is called once per frame
     void Update()
@@ -30,10 +30,22 @@ public class ThrowSpell : MonoBehaviour
 
     void Shoot()
     {
+
+        Ray ray = m_Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            m_Destination = hit.point;
+        }
+        else
+            m_Destination = ray.GetPoint(1000);
+
         Debug.Log("Shooting");
         m_WandAnimator.Play("WandDown");
-        Instantiate(m_SpellPrefab, m_SpawinningPoint.position, m_SpawinningPoint.rotation);
-        
+        GameObject projectile =  Instantiate(m_SpellPrefab, m_SpawinningPoint.position, m_SpawinningPoint.rotation);
+        projectile.GetComponent<Rigidbody>().velocity = (m_Destination - m_SpawinningPoint.position).normalized * projectileSpeed;
     }
 
   
