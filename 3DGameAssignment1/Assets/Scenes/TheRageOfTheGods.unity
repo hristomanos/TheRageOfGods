@@ -2548,6 +2548,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4062,7 +4066,7 @@ MonoBehaviour:
   m_WandAnimator: {fileID: 896516072}
   m_Damage: 100
   m_Cam: {fileID: 963194227}
-  projectileSpeed: 2
+  projectileSpeed: 50
 --- !u!43 &2097388132
 Mesh:
   m_ObjectHideFlags: 0
