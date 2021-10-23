@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This is script describes how a bullet should behave when shot.
 public class Bullet : MonoBehaviour
 {
 

@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6648196d7644e5046809ad03fa7125e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactVFX: {fileID: 2310721762490408389, guid: 7adce0eae74b47447b4f463d510e1163, type: 3}
+  m_ImpactVFX: {fileID: 2310721762490408389, guid: 7adce0eae74b47447b4f463d510e1163, type: 3}
+  m_TimeAlive: 7
 --- !u!1 &2372572066345452356
 GameObject:
   m_ObjectHideFlags: 0
