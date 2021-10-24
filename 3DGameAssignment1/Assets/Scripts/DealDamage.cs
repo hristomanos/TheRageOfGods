@@ -6,7 +6,8 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour
 {
    [SerializeField] GameObject m_ImpactVFX;
-    [SerializeField] float m_TimeAlive;
+   [SerializeField] float m_TimeAlive;
+   [SerializeField] int m_Damage;
 
     private void Start()
     {
@@ -19,6 +20,13 @@ public class DealDamage : MonoBehaviour
         if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
         {
             collided = true;
+
+            //if Enemy, Call AI script and call TakeDamage()
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<AI>().TakeDamage(m_Damage);
+               
+            }
 
             GameObject impact = Instantiate(m_ImpactVFX, collision.contacts[0].point, Quaternion.identity);
 

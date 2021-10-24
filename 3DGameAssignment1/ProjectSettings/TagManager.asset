@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Dodgeball
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4341842319988653880}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,4 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b856fe838d90ca544a78845529f08e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetPosition: {fileID: 0}
+  m_HP: 100

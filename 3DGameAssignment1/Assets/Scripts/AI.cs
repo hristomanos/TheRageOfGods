@@ -5,10 +5,14 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
-    private Transform m_TargetPosition;
+    Transform m_TargetPosition;
+    
     NavMeshAgent m_NavMeshAgent;
 
-   public void SetTargetPosition(Transform targetPosition) { m_TargetPosition = targetPosition; }
+    [SerializeField] int m_HP;
+
+
+    public void SetTargetPosition(Transform targetPosition) { m_TargetPosition = targetPosition; }
 
 
 
@@ -23,4 +27,19 @@ public class AI : MonoBehaviour
     {
         m_NavMeshAgent.destination = m_TargetPosition.position;
     }
+
+   public void TakeDamage(int damage)
+    {
+        m_HP -= damage;
+
+        if (m_HP <= 0)
+        {
+            m_HP = 0;
+
+            //Enemy Killed
+            Destroy(gameObject);
+        }
+    }
+
+
 }
