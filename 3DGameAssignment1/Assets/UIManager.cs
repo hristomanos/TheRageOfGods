@@ -21,8 +21,11 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField] Slider m_HealthOrbSlider;
+    [SerializeField] Slider m_ManaOrbSlider;
     [SerializeField] float refillSpeed;
     bool refilling = true;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +39,12 @@ public class UIManager : MonoBehaviour
         
     }
 
-   public void Decrease(int decreaseAmount)
+   public void DecreaseHealthValue(int decreaseAmount)
     {
         m_HealthOrbSlider.value -= decreaseAmount;
     }
 
-    public void Refill()
+    public void HealthRefill()
     {
         if (refilling)
         {
@@ -55,5 +58,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void DecreaseManaValue(int decreaseAmount)
+    {
+        m_ManaOrbSlider.value -= decreaseAmount;
+    }
 
 }
