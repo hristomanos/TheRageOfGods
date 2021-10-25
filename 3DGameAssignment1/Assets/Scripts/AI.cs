@@ -5,36 +5,38 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
-    Transform m_TargetPosition;
-    
-    NavMeshAgent m_NavMeshAgent;
+    protected Player m_Player;
+    [SerializeField] protected int    p_HP;
+    protected GameObject               p_TargetGameObject;
 
-    [SerializeField] int m_HP;
+    [SerializeField] protected int p_Damage;
+    NavMeshAgent                      m_NavMeshAgent;
 
+    // protected Transform p_TargetTransform;
+    // public void SetTargetPosition(Transform targetPosition) { p_TargetPosition = targetPosition; }
+    public void SetTargetGameObject(GameObject targetGameObject) { p_TargetGameObject = targetGameObject; }
 
-    public void SetTargetPosition(Transform targetPosition) { m_TargetPosition = targetPosition; }
-
-
-
-    // Start is called before the first frame update
-    void Awake()
+    protected virtual void Start()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        m_Player = p_TargetGameObject.GetComponent<Player>();
     }
 
+
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        m_NavMeshAgent.destination = m_TargetPosition.position;
+        m_NavMeshAgent.destination = p_TargetGameObject.transform.position;
+        
     }
 
    public void TakeDamage(int damage)
     {
-        m_HP -= damage;
+        p_HP -= damage;
 
-        if (m_HP <= 0)
+        if (p_HP <= 0)
         {
-            m_HP = 0;
+            p_HP = 0;
 
             //Enemy Killed
             Destroy(gameObject);

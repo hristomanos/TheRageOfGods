@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2269024719575976823}
   - component: {fileID: 2269024719575976820}
   - component: {fileID: 5134955607096782926}
-  - component: {fileID: -5666270343764317519}
+  - component: {fileID: -1845480530586865357}
   m_Layer: 0
   m_Name: Fast
   m_TagString: Enemy
@@ -2277,7 +2277,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-5666270343764317519
+--- !u!114 &-1845480530586865357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2286,7 +2286,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2269024719575976821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b856fe838d90ca544a78845529f08e2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b56f63875e776c4ea29977893a0b2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HP: 100
+  p_HP: 100
+  p_Damage: 30

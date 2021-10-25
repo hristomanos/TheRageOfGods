@@ -12,7 +12,7 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] List<Transform> m_SpawnningPoints;
 
     
-    [SerializeField] Transform m_PlayerPosition;
+    [SerializeField] GameObject m_TargetGameObject;
 
     [Header("Spawn Delay time")]
     [SerializeField]  int m_InitialSpawnningDelay;
@@ -50,8 +50,8 @@ public class SpawnEnemies : MonoBehaviour
     void SpawnEnemy()
     {
 
-       GameObject m_Instance = Instantiate(GetRandomEnemyType(), GetRandomSpawnPoint(), Quaternion.identity);
-        m_Instance.GetComponent<AI>().SetTargetPosition(m_PlayerPosition);
+       GameObject instanceGameObject = Instantiate(GetRandomEnemyType(), GetRandomSpawnPoint(), Quaternion.identity);
+       instanceGameObject.GetComponent<AI>().SetTargetGameObject(m_TargetGameObject);
     }
 
 
