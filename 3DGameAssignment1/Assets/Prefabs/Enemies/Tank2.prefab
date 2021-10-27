@@ -147,7 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SpikesPrefab: {fileID: 543544280277094431, guid: b9f6f22f76f7fc54186a82cac525d6ae, type: 3}
   m_TankPrefab: {fileID: 8150949301436376742}
-  m_TankScript: {fileID: 687500317938516431}
 --- !u!1 &8150949301436376743
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,5 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_HP: 100
-  p_Damage: 50
+  p_Damage: 10
   m_Animator: {fileID: 8150949301325415962}
+  m_AttackCoolDown: 5
+  m_SpikeSpawnner: {fileID: 6248533769307600642}

@@ -8,11 +8,10 @@ public class SpikesDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTrigger");
-        Player player = other.GetComponent<Player>();
+        Player player = other.GetComponentInChildren<Player>();
         if (player != null)
         {
-            Debug.Log("Player detected");
+            
             player.TakeDamage(m_Damage);
         }
     }
