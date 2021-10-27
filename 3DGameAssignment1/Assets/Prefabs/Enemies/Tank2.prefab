@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8150949301325415961}
   - component: {fileID: 8150949301325415962}
+  - component: {fileID: 6248533769307600642}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -121,7 +122,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150949301325415963}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 03782f249514d91468bbd785bdc182d9, type: 2}
   m_CullingMode: 0
@@ -132,6 +133,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6248533769307600642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150949301325415963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa91613ab2d84a24ea72a5cfeeca6679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpikesPrefab: {fileID: 543544280277094431, guid: b9f6f22f76f7fc54186a82cac525d6ae, type: 3}
+  m_TankPrefab: {fileID: 8150949301436376742}
+  m_TankScript: {fileID: 687500317938516431}
 --- !u!1 &8150949301436376743
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +159,7 @@ GameObject:
   - component: {fileID: 8150949301436376742}
   - component: {fileID: 6040988277272761020}
   - component: {fileID: 5058990907955716934}
-  - component: {fileID: 3079912391183047257}
+  - component: {fileID: 687500317938516431}
   m_Layer: 0
   m_Name: Tank2
   m_TagString: Enemy
@@ -201,7 +217,7 @@ NavMeshAgent:
   m_BaseOffset: 2.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3079912391183047257
+--- !u!114 &687500317938516431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,8 +226,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8150949301436376743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b856fe838d90ca544a78845529f08e2c, type: 3}
+  m_Script: {fileID: 11500000, guid: cda8a73f6c5d00942a8b768042fc6204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   p_HP: 100
   p_Damage: 50
+  m_Animator: {fileID: 8150949301325415962}

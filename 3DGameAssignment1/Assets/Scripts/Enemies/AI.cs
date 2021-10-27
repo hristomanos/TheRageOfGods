@@ -6,19 +6,19 @@ using UnityEngine.AI;
 public class AI : MonoBehaviour
 {
     protected Player m_Player;
-    [SerializeField] protected int    p_HP;
+    [SerializeField] protected int     p_HP;
     protected GameObject               p_TargetGameObject;
 
-    [SerializeField] protected int p_Damage;
-    NavMeshAgent                      m_NavMeshAgent;
+    [SerializeField] protected int     p_Damage;
+   protected NavMeshAgent              p_NavMeshAgent;
 
     // protected Transform p_TargetTransform;
     // public void SetTargetPosition(Transform targetPosition) { p_TargetPosition = targetPosition; }
     public void SetTargetGameObject(GameObject targetGameObject) { p_TargetGameObject = targetGameObject; }
-
+    public GameObject GetTargetGameObject() { return p_TargetGameObject; }
     protected virtual void Start()
     {
-        m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        p_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_Player = p_TargetGameObject.GetComponent<Player>();
     }
 
@@ -26,7 +26,7 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        m_NavMeshAgent.destination = p_TargetGameObject.transform.position;
+        p_NavMeshAgent.destination = p_TargetGameObject.transform.position;
         
     }
 
