@@ -8,6 +8,8 @@ public class DealDamage : MonoBehaviour
    [SerializeField] GameObject m_ImpactVFX;
    [SerializeField] float m_TimeAlive;
    [SerializeField] int m_Damage;
+   [SerializeField] string m_Shooter;
+   [SerializeField] string m_Receiver;
 
     private void Start()
     {
@@ -17,14 +19,22 @@ public class DealDamage : MonoBehaviour
     bool collided = false;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
+        if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != m_Shooter && !collided)
         {
             collided = true;
 
             //if Enemy, Call AI script and call TakeDamage()
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag(m_Receiver))
             {
-                collision.gameObject.GetComponent<AI>().TakeDamage(m_Damage);
+                switch(m_Receiver)
+                {
+                    case "Enemy":
+                        collision.gameObject.GetComponent<AI>().TakeDamage(m_Damage);
+                        break;
+                    case "Player":
+                        collision.gameObject.GetComponentInChildren<Player>().TakeDamage(m_Damage);
+                        break;
+                }
                
             }
 

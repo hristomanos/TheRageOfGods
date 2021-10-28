@@ -5107,7 +5107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_HP: 100
   p_Damage: 10
+  m_SpikeSpawnner: {fileID: 6248533769307600642}
   m_Animator: {fileID: 8150949301325415962}
   m_AttackCoolDown: 5
-  m_SpikeSpawnner: {fileID: 6248533769307600642}
-  m_SmokeParticleSystem: {fileID: 2405935798759133370}
+  m_StoppingDistance: 15

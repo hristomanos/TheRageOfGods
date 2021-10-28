@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Enemies\SpikesSpawner.cs" />
     <Compile Include="Assets\Scripts\Enemies\Tank.cs" />
     <Compile Include="Assets\Scripts\Enemies\SmokeParticleSystemEnabler.cs" />
+    <Compile Include="Assets\EnemyWizard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\StarterAssets\Environment\Shaders\Built-in_RP\Triplanar.shader" />

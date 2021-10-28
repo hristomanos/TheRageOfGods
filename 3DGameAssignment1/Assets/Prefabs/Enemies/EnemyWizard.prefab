@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2809516893707328095}
   - component: {fileID: 5701205170803464483}
   - component: {fileID: 5235796900681925218}
-  - component: {fileID: 6298206802493667129}
+  - component: {fileID: 1918595746651268116}
   m_Layer: 0
-  m_Name: FromAfar
+  m_Name: EnemyWizard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,7 +687,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6298206802493667129
+--- !u!114 &1918595746651268116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -696,7 +696,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7912919158007996867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b856fe838d90ca544a78845529f08e2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bd1165908de9be4b9330b52743d2f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HP: 100
+  p_HP: 100
+  p_Damage: 10
+  m_StoppingDistance: 15
+  m_retreatDistance: 10
+  m_StartTimeBtwShots: 2
+  m_Projectile: {fileID: 4430413367129484137, guid: 8a9bfc3af5c71d74cabf71afaafce6be, type: 3}

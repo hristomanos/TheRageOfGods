@@ -5,11 +5,13 @@ using UnityEngine;
 public class Tank : AI
 {
 
+    [SerializeField] SpikesSpawner m_SpikeSpawnner;
     [SerializeField] Animator m_Animator;
     [SerializeField] float m_AttackCoolDown;
+    [SerializeField] float m_StoppingDistance;
+
     float m_AttackCoolDownTime;
     bool m_bAttacked = false;
-   [SerializeField] SpikesSpawner m_SpikeSpawnner;
    protected override void Start()
     {
         base.Start();
@@ -30,7 +32,7 @@ public class Tank : AI
     void Attack()
     {
         float distanceToTarget = Vector3.Distance(p_TargetGameObject.transform.position, transform.position);
-        if (distanceToTarget < 15f)
+        if (distanceToTarget < m_StoppingDistance)
         {
             p_NavMeshAgent.SetDestination(gameObject.transform.position);
             if (m_bAttacked == false)
