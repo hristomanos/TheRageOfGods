@@ -18,6 +18,5 @@ public class SpikesSpawner : MonoBehaviour
         spikesGameObject.transform.LookAt(tankLookAtPosition);
         Destroy(spikesGameObject, 5f);
     }
-
 }
 

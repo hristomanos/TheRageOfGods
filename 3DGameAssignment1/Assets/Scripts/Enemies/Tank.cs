@@ -20,8 +20,8 @@ public class Tank : AI
     protected override void Update()
     {
         base.Update();
-        AttackCoolDownTimer();
         Attack();
+        AttackCoolDownTimer();
     }
 
 
@@ -37,6 +37,7 @@ public class Tank : AI
             {
                 //Play animation when close to the player     
                 m_Animator.Play("JumpTest");
+                
                 if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("JumpTest"))
                 {
                     StartCoroutine(PauseAnimation());
@@ -51,6 +52,7 @@ public class Tank : AI
 
     IEnumerator PauseAnimation()
     {
+        m_bAttacked = true;
         //Get player's position and pass it 
         m_SpikeSpawnner.SetTargetPosition(p_TargetGameObject.transform.position);
         yield return new WaitForSeconds(1.5f);
@@ -58,9 +60,8 @@ public class Tank : AI
 
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("CrushDown"))
         {
-            m_bAttacked = true;
+            Debug.Log("Should play smoke");
         }
-
     }
 
     void AttackCoolDownTimer()
@@ -69,7 +70,7 @@ public class Tank : AI
         {
 
             m_AttackCoolDownTime -= Time.deltaTime;
-            Debug.Log("Cooldown time" + m_AttackCoolDownTime);
+          
             if (m_AttackCoolDownTime <= 0)
             {
                 m_bAttacked = false;
