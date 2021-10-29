@@ -23,7 +23,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        m_Rigidbody.AddForce(m_DirectionToTarget * m_Force, ForceMode.Impulse);
+        m_Rigidbody.AddForce(m_DirectionToTarget * m_Force, ForceMode.VelocityChange);
+
     }
 
    public void SetDirectionToTarget(Vector3 targetPosition)

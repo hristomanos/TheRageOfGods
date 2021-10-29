@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpactVFX: {fileID: 2310721762490408389, guid: 7adce0eae74b47447b4f463d510e1163, type: 3}
   m_TimeAlive: 7
-  m_Damage: 50
+  m_Damage: 25
   m_Shooter: Player
   m_Receiver: Enemy
 --- !u!1 &2372572066345452356

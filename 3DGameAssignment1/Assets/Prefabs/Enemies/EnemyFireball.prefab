@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c15f7adb3397149ae9dd36c4565afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartPosition: {fileID: 3926052083775092515, guid: a11e9ea6ba69dd34c8655ce06776d116, type: 3}
   m_Force: 0.1
 --- !u!1001 &2380871744348581405
 PrefabInstance:
@@ -21,6 +20,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8913219622202582742, guid: 325d582c63a82714db82beec53413dc8, type: 3}
+      propertyPath: m_Damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8913219622202582742, guid: 325d582c63a82714db82beec53413dc8, type: 3}
       propertyPath: m_Shooter
       value: Enemy

@@ -5105,8 +5105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda8a73f6c5d00942a8b768042fc6204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_HP: 100
-  p_Damage: 10
+  p_HP: 200
+  p_Damage: 30
   m_SpikeSpawnner: {fileID: 6248533769307600642}
   m_Animator: {fileID: 8150949301325415962}
   m_AttackCoolDown: 5
