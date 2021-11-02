@@ -25,6 +25,7 @@ public class FastEnemy : AI
             //Damage player!
             m_Player.TakeDamage(p_Damage);
             //Explode!
+            SpawnEnemies.Instance.m_AliveEnemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }

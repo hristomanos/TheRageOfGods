@@ -12195,7 +12195,7 @@ PrefabInstance:
       objectReference: {fileID: 1741188296}
     - target: {fileID: 5875256990527455804, guid: dc72952e0b8a72a409e072e8993fac73, type: 3}
       propertyPath: m_TimeInBetweenWaves
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5875256990527455804, guid: dc72952e0b8a72a409e072e8993fac73, type: 3}
       propertyPath: m_InitialSpawnningDelay

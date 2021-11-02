@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
     [Header("Orbs")]
     [SerializeField] Slider m_HealthOrbSlider;
     [SerializeField] Slider m_ManaOrbSlider;
@@ -104,19 +105,25 @@ public class UIManager : MonoBehaviour
     public void UpdateCurrentWavesUI(int currentWave)
     {
         Debug.Log("In sequence");
-        Sequence waveCompletedSequence = DOTween.Sequence();
-        waveCompletedSequence.Append(m_WaveCompletedText.DOFade(0, 0.5f));
-        waveCompletedSequence.Append(m_CurrentWaveText.transform.DOLocalMoveX(Screen.currentResolution.width * 0.3f, 3));
-        waveCompletedSequence.Append(m_CurrentWaveText.transform.DOScale(2, 2));
-        m_CurrentWaveText.text = currentWave.ToString();
-        //yield return new WaitForSeconds(2.0f);
-        waveCompletedSequence.Append(m_CurrentWaveText.transform.DOScale(1, 2));
-        waveCompletedSequence.Append(m_CurrentWaveText.transform.DOLocalMoveX(-Screen.currentResolution.width * 0.2f, 2)); ;
-
-
-
+        StartCoroutine(WavesCompletedSequence(currentWave));
     }
 
+
+
+    IEnumerator WavesCompletedSequence(int currentWave)
+    {
+        float resetPosition = m_CurrentWaveText.transform.localPosition.x;
+        Sequence ScaleUpSequence = DOTween.Sequence();
+        ScaleUpSequence.Append(m_WaveCompletedText.DOFade(1, 1));
+        ScaleUpSequence.Join(m_CurrentWaveText.transform.DOLocalMoveX(250, 1));
+        ScaleUpSequence.Join(m_CurrentWaveText.transform.DOScale(2, 1));
+        m_CurrentWaveText.text = currentWave.ToString();
+        yield return new WaitForSeconds(3.0f);
+        Sequence ResetSequence = DOTween.Sequence();
+        ResetSequence.Append(m_CurrentWaveText.transform.DOScale(1, 1));
+        ResetSequence.Join(m_WaveCompletedText.DOFade(0, 1.2f));
+        ResetSequence.Join(m_CurrentWaveText.transform.DOLocalMoveX(resetPosition, 1));
+    }
 
    public void RestartButton()
     {
