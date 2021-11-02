@@ -40,11 +40,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject m_GameOverScreen;
     [SerializeField] TextMeshProUGUI m_RoundsSurvivedText;
     [SerializeField] Button m_Restart;
-
+    [SerializeField] Image m_ShortPanel;
+    [SerializeField] Image m_FullScreenPanel;
+    [SerializeField] TextMeshProUGUI m_SlainedText;
+    [SerializeField] TextMeshProUGUI m_GameOverText;
+    [SerializeField] Image m_RestartButtonImage;
+    [SerializeField] TextMeshProUGUI m_RestartButtonText;
 
     [Header("Crosshair")]
     [SerializeField] Image m_Crosshair;
 
+    [SerializeField] StarterAssets.FirstPersonController m_FirstPersonControllerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -84,27 +90,38 @@ public class UIManager : MonoBehaviour
 
     public void InitiateGameOverScreenSequence()
     {
-        //Turn Health and mana sliders off
-        //Turn Wand Off
-        //Turn Waves text off
-
         DisableGameplayHUD();
-        Time.timeScale = 0;
         Cursor.visible = true;
+        m_RoundsSurvivedText.text = "You survived " + m_CurrentWaveText.text + " rounds";
+        m_FirstPersonControllerScript.enabled = false;
+        StartCoroutine(PanelSequence());
 
         
-        m_RoundsSurvivedText.text = "You survived " + m_CurrentWaveText.text + " rounds";
-        m_GameOverScreen.SetActive(true);
-        
-        //Fade in panel and You have been slained text
-        //Wait for two seconds
-        //Fade in rest of UI components
-        //m_ShortPanel.color = new Color32()
+
     }
+
+    IEnumerator PanelSequence()
+    {
+        Sequence firstSequence = DOTween.Sequence();
+
+        firstSequence.Append(m_ShortPanel.DOFade(0.5f,1));
+        firstSequence.Join(m_SlainedText.DOFade(1, 1));
+
+        yield return firstSequence.WaitForCompletion();
+
+        Sequence secondSequence = DOTween.Sequence();
+        m_Restart.enabled = true;
+        secondSequence.Append(m_RoundsSurvivedText.DOFade(1,1));
+        secondSequence.Join(m_GameOverText.DOFade(1,1));
+        secondSequence.Join(m_FullScreenPanel.DOFade(0.3f, 1));
+        secondSequence.Join(m_RestartButtonImage.DOFade(1,1));
+        secondSequence.Join(m_RestartButtonText.DOFade(1, 1));
+
+    }
+
 
     public void UpdateCurrentWavesUI(int currentWave)
     {
-        Debug.Log("In sequence");
         StartCoroutine(WavesCompletedSequence(currentWave));
     }
 

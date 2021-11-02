@@ -11,15 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField]   StarterAssets.StarterAssetsInputs m_StarterAssetsInputs;
     [SerializeField] ThrowSpell m_ThrowspellScript;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool IsDead()
     {
-    
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        if (m_HealthPoints <= 0)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 
    public void TakeDamage(int damage)

@@ -23,7 +23,10 @@ public class EnemyWizard : AI
     protected override void Update()
     {
         base.Update();
-        Attack();
+        if(!p_Player.IsDead())
+        {
+            Attack();
+        }
     }
 
     void Attack()

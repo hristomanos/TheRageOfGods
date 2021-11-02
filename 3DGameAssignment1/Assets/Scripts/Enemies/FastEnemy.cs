@@ -14,7 +14,10 @@ public class FastEnemy : AI
     protected override void Update()
     {
         base.Update();
-        Attack();
+        if (!p_Player.IsDead())
+        {
+            Attack();
+        }
     }
 
     void Attack()
@@ -23,7 +26,7 @@ public class FastEnemy : AI
         if (distanceToTarget < 1.5f)
         {
             //Damage player!
-            m_Player.TakeDamage(p_Damage);
+            p_Player.TakeDamage(p_Damage);
             //Explode!
             SpawnEnemies.Instance.m_AliveEnemies.Remove(gameObject);
             Destroy(gameObject);

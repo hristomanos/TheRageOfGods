@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
-    protected Player m_Player;
+    protected Player p_Player;
     [SerializeField] protected int     p_HP;
     protected GameObject               p_TargetGameObject;
 
@@ -19,14 +19,21 @@ public class AI : MonoBehaviour
     protected virtual void Start()
     {
         p_NavMeshAgent = GetComponent<NavMeshAgent>();
-        m_Player = p_TargetGameObject.GetComponent<Player>();
+        p_Player = p_TargetGameObject.GetComponent<Player>();
     }
 
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        p_NavMeshAgent.destination = p_TargetGameObject.transform.position;
+        if (p_Player.IsDead())
+        {
+            PlayerIsDead();
+        }
+        else
+        {
+            p_NavMeshAgent.destination = p_TargetGameObject.transform.position;
+        }
         
     }
 
@@ -44,6 +51,12 @@ public class AI : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    protected void PlayerIsDead()
+    {
+        p_NavMeshAgent.SetDestination(gameObject.transform.position);
+    }
+
 
 
 }

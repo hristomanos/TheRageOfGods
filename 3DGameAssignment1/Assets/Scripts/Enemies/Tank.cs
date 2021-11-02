@@ -22,8 +22,12 @@ public class Tank : AI
     protected override void Update()
     {
         base.Update();
-        Attack();
-        AttackCoolDownTimer();
+        if (!p_Player.IsDead())
+        {
+            Attack();
+            AttackCoolDownTimer();
+
+        }
     }
 
 
