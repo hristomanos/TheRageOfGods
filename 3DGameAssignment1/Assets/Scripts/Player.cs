@@ -8,19 +8,18 @@ public class Player : MonoBehaviour
     [SerializeField] int m_HealthPoints;
     [SerializeField] int m_ManaPoints;
 
-
-
+    [SerializeField]   StarterAssets.StarterAssetsInputs m_StarterAssetsInputs;
+    [SerializeField] ThrowSpell m_ThrowspellScript;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
    public void TakeDamage(int damage)
@@ -36,7 +35,11 @@ public class Player : MonoBehaviour
             m_HealthPoints = 0;
 
             //UI Game over
-            
+            m_StarterAssetsInputs.cursorLocked = false;
+            //m_StarterAssetsInputs.cursorInputForLook = false;
+            m_ThrowspellScript.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            UIManager.Instance.InitiateGameOverScreenSequence();
         }
     }
 

@@ -39,6 +39,8 @@ public class AI : MonoBehaviour
             p_HP = 0;
 
             //Enemy Killed
+            //Remove enemy from list of alive enemies
+            SpawnEnemies.Instance.m_AliveEnemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
