@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_WavesText;
     [SerializeField] TextMeshProUGUI m_CurrentWaveText;
     [SerializeField] TextMeshProUGUI m_WaveCompletedText;
+    [SerializeField] TextMeshProUGUI m_WaveCountDownText;
+    [SerializeField] TextMeshProUGUI m_TimeTillNextWaveText;
 
     [Header("Game Over Screen")]
     [SerializeField] GameObject m_GameOverScreen;
@@ -50,19 +52,34 @@ public class UIManager : MonoBehaviour
     [Header("Crosshair")]
     [SerializeField] Image m_Crosshair;
 
+    [Header("Pause Menu")]
+    [SerializeField] Image m_PausePanel;
+
+
     [SerializeField] StarterAssets.FirstPersonController m_FirstPersonControllerScript;
 
+    bool m_iSGameOver = false;
+    public bool IsGameOver() { return m_iSGameOver; }
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         DOTween.Init();
+
+        //if (m_Instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    m_Instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
    public void DecreaseHealthValue(int decreaseAmount)
     {
@@ -90,6 +107,7 @@ public class UIManager : MonoBehaviour
 
     public void InitiateGameOverScreenSequence()
     {
+        m_iSGameOver = true;
         DisableGameplayHUD();
         Cursor.visible = true;
         m_RoundsSurvivedText.text = "You survived " + m_CurrentWaveText.text + " rounds";
@@ -97,7 +115,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(PanelSequence());
 
         
-
+        
     }
 
     IEnumerator PanelSequence()
@@ -145,9 +163,9 @@ public class UIManager : MonoBehaviour
    public void RestartButton()
     {
         Cursor.visible = false;
-        Cursor.lockState =  CursorLockMode.Confined;
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        m_iSGameOver = false;
+        Cursor.lockState =  CursorLockMode.Locked;
+        SceneManager.LoadScene(1);
     }
 
     void DisableGameplayHUD()
@@ -159,7 +177,44 @@ public class UIManager : MonoBehaviour
         m_Crosshair.enabled = false;
     }
 
+   public void PauseMenu()
+    {
+       
+        m_PausePanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        
+    }
 
+    public void ResumeButton()
+    {
+        //Disable PauseMenu panel
+        Time.timeScale = 1;
+        m_PausePanel.gameObject.SetActive(false);
+    }
 
+    public void DisplayWaveCountDown(float waveCountDown)
+    {
+        //Text
+        m_TimeTillNextWaveText.enabled = true;
+        m_WaveCountDownText.enabled = true;
+
+        m_WaveCountDownText.text = waveCountDown.ToString("0.00");
+
+        if (waveCountDown <= 3)
+        {
+            m_WaveCountDownText.color = Color.red;
+        }
+        else
+        {
+            m_WaveCountDownText.color = Color.white;
+        }
+
+    }
+
+   public void DisableWaveCountDown()
+    {
+        m_TimeTillNextWaveText.enabled = false;
+        m_WaveCountDownText.enabled = false;
+    }
 
 }

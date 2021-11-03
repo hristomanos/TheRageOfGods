@@ -77,12 +77,15 @@ public class SpawnEnemies : MonoBehaviour
         {
             if (m_Spawnstate != Spawnstate.SPAWNING)
             {
+                UIManager.Instance.DisableWaveCountDown();
                 StartCoroutine(SpawnWaves());
             }
         }
         else
         {
             m_WaveCountdown -= Time.deltaTime;
+            //Update UI
+            UIManager.Instance.DisplayWaveCountDown(m_WaveCountdown);
         }
     }
 

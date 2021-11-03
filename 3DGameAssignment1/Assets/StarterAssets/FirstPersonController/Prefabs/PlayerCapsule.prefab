@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5393215578589016655}
   - component: {fileID: 5393215578589016640}
   - component: {fileID: 2046272163}
+  - component: {fileID: 1741188302}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -144,6 +145,22 @@ MonoBehaviour:
   m_WandAnimator: {fileID: 0}
   m_Cam: {fileID: 0}
   projectileSpeed: 50
+--- !u!114 &1741188302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393215578589016642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9148f768d3943242b1fcb74b2c0e94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthPoints: 10
+  m_ManaPoints: 100
+  m_StarterAssetsInputs: {fileID: 5420857361349278248}
+  m_ThrowspellScript: {fileID: 2046272163}
 --- !u!1 &8616685848737228372
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +232,7 @@ MonoBehaviour:
   SprintSpeed: 10
   RotationSpeed: 1
   SpeedChangeRate: 10
-  JumpHeight: 1.2
+  JumpHeight: 0
   Gravity: -15
   JumpTimeout: 0.1
   FallTimeout: 0.15
