@@ -61,7 +61,7 @@ public class EnemyWizard : AI
 
     void Shoot()
     {
-        Vector3 spawnPosition = new Vector3(gameObject.transform.position.x, 1.5f, gameObject.transform.position.z);
+        Vector3 spawnPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z);
         GameObject projectileGameObject = Instantiate(m_Projectile, spawnPosition, Quaternion.identity);
         //projectileGameObject.transform.LookAt(p_TargetGameObject.transform.position);
         projectileGameObject.GetComponent<Bullet>().SetDirectionToTarget(p_TargetGameObject.transform.position);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] ThrowSpell m_PlayerThrowSpellScript;
-
+    bool m_isGamePaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,14 +16,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && UIManager.Instance.IsGameOver() == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && UIManager.Instance.IsGameOver() == false && m_isGamePaused == false)
         {
             PauseGame();
-        }     
+        } else if (Input.GetKeyDown(KeyCode.Escape) && m_isGamePaused && UIManager.Instance.IsGameOver() == false)
+        {
+            ResumeGame();
+        }
+
     }
 
     void PauseGame()
     {
+        m_isGamePaused = true;
         m_PlayerThrowSpellScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -32,6 +37,7 @@ public class GameManager : MonoBehaviour
 
    public void ResumeGame()
     {
+        m_isGamePaused = false;
         Cursor.visible = false;
         m_PlayerThrowSpellScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
