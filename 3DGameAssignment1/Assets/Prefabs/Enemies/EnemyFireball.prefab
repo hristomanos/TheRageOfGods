@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyFireball
       objectReference: {fileID: 0}
+    - target: {fileID: 2049546055725106548, guid: 325d582c63a82714db82beec53413dc8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2049546055725106552, guid: 325d582c63a82714db82beec53413dc8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -92,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9103f5a88e0c04b4caf3d1b7c33fb96c, type: 2}
+    - target: {fileID: 2372572066345452356, guid: 325d582c63a82714db82beec53413dc8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3154304797114360479, guid: 325d582c63a82714db82beec53413dc8, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.80585015
@@ -123,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 3465871526383011936, guid: 325d582c63a82714db82beec53413dc8, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
       value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961992730739559565, guid: 325d582c63a82714db82beec53413dc8, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 325d582c63a82714db82beec53413dc8, type: 3}

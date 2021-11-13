@@ -18,9 +18,9 @@ TagManager:
   - UI
   - Weapon
   - CharacterDesign
-  - 
-  - 
-  - 
+  - Player
+  - Projectile
+  - PostProcessing
   - 
   - 
   - 

@@ -32,6 +32,7 @@ public class SpawnEnemies : MonoBehaviour
 
     //Target
     [SerializeField] GameObject m_TargetGameObject;
+    Player m_PlayerScript;
 
     [Header("Spawn Delay time")]
     [SerializeField]  int m_TimeInBetweenWaves;
@@ -53,39 +54,44 @@ public class SpawnEnemies : MonoBehaviour
         m_WaveCountdown = m_TimeInBetweenWaves;
         m_CurrentWave = 1;
         m_SearchCountDown = 1f;
+        m_PlayerScript = m_TargetGameObject.GetComponent<Player>();
     }
 
 
     private void Update()
     {
-
-        if (m_Spawnstate == Spawnstate.WAITING)
+        if (m_PlayerScript.IsDead() == false)
         {
-            if (EnemyIsAlive() == false)
+
+
+            if (m_Spawnstate == Spawnstate.WAITING)
             {
-                WaveCompleted();
-            }
-            else
-            {
+                if (EnemyIsAlive() == false)
+                {
+                    WaveCompleted();
+                }
+                else
+                {
+                    return;
+                }
+
                 return;
             }
 
-            return;
-        }
-
-        if (m_WaveCountdown <= 0)
-        {
-            if (m_Spawnstate != Spawnstate.SPAWNING)
+            if (m_WaveCountdown <= 0)
             {
-                UIManager.Instance.DisableWaveCountDown();
-                StartCoroutine(SpawnWaves());
+                if (m_Spawnstate != Spawnstate.SPAWNING)
+                {
+                    UIManager.Instance.DisableWaveCountDown();
+                    StartCoroutine(SpawnWaves());
+                }
             }
-        }
-        else
-        {
-            m_WaveCountdown -= Time.deltaTime;
-            //Update UI
-            UIManager.Instance.DisplayWaveCountDown(m_WaveCountdown);
+            else
+            {
+                m_WaveCountdown -= Time.deltaTime;
+                //Update UI
+                UIManager.Instance.DisplayWaveCountDown(m_WaveCountdown);
+            }
         }
     }
 
