@@ -12,14 +12,24 @@ public class ThrowSpell : MonoBehaviour
 
     [SerializeField] Camera m_Cam;
     [SerializeField] float projectileSpeed;
-    Vector3 m_Destination; 
+    Vector3 m_Destination;
+
+    [SerializeField] AudioSource m_FireBallShotAudioSource;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+            // m_WandAnimator.Play("WandDown");
+            //m_WandAnimator.SetBool("isWandDown", true);
+            //m_WandAnimator.SetBool("isWandUp", false);
         }
+        //} else if(Input.GetMouseButtonUp(0))
+        //{
+        //    m_WandAnimator.SetBool("isWandUp", true);
+        //    m_WandAnimator.SetBool("isWandDown", false);
+        //}
     }
 
     void Shoot()
@@ -38,9 +48,15 @@ public class ThrowSpell : MonoBehaviour
 
         
         m_WandAnimator.Play("WandDown");
+        m_FireBallShotAudioSource.Play();
         GameObject projectile =  Instantiate(m_SpellPrefab, m_SpawinningPoint.position, m_SpawinningPoint.rotation);
         projectile.GetComponent<Rigidbody>().velocity = (m_Destination - m_SpawinningPoint.position).normalized * projectileSpeed;
     }
 
+
+    //Break shooting mechanic to two staget
+    //One is chargeFireball when mouse is hold
+    //Second is shoot when mouse is up
+    //Which involves releasing the fireball
   
 }

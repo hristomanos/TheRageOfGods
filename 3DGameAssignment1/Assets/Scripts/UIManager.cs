@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         DOTween.Init();
-
+        DOTween.SetTweensCapacity(2000, 250);
         //if (m_Instance != null)
         //{
         //    Destroy(gameObject);

@@ -21,7 +21,16 @@ public class Player : MonoBehaviour
             return false;
     }
 
-   public void TakeDamage(int damage)
+    private void Update()
+    {
+        if (transform.position.y <= 1)
+        {
+            TakeDamage(100);
+        }
+    }
+
+
+    public void TakeDamage(int damage)
     {
         m_HealthPoints -= damage;
         //UI Red overlay
