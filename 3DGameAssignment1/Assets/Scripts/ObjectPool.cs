@@ -50,11 +50,5 @@ public class ObjectPool : MonoBehaviour
 }
 
 
-[System.Serializable]
-public class ProbabilityEnemy
-{
-    public GameObject spawnObject;
-    public int minProbabilityRange = 0;
-    public int maxProbabilityRange = 0;
-}
+
 

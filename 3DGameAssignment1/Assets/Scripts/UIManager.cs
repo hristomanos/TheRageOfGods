@@ -62,21 +62,11 @@ public class UIManager : MonoBehaviour
     public bool IsGameOver() { return m_iSGameOver; }
 
 
-    // Start is called before the first frame update
+    
     void Awake()
     {
         DOTween.Init();
         DOTween.SetTweensCapacity(2000, 250);
-        //if (m_Instance != null)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    m_Instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-
     }
 
    
@@ -111,8 +101,8 @@ public class UIManager : MonoBehaviour
         DisableGameplayHUD();
         Cursor.visible = true;
         m_RoundsSurvivedText.text = "You survived " + m_CurrentWaveText.text + " rounds";
-        m_FirstPersonControllerScript.enabled = false;
-        StartCoroutine(PanelSequence());
+        m_FirstPersonControllerScript.enabled = false; //Disable player input
+        StartCoroutine(PanelSequence()); //Start UI animation sequence
 
         
         
@@ -198,7 +188,7 @@ public class UIManager : MonoBehaviour
         m_TimeTillNextWaveText.enabled = true;
         m_WaveCountDownText.enabled = true;
 
-        m_WaveCountDownText.text = waveCountDown.ToString("0.00");
+        m_WaveCountDownText.text = waveCountDown.ToString("0.0");
 
         if (waveCountDown <= 3)
         {
