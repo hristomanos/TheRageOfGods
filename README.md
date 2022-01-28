@@ -2,6 +2,13 @@
 
 ---
 
+## Play it online
+https://chrima.itch.io/therageofthegods
+
+## Gameplay video
+
+https://www.youtube.com/watch?v=u-oUhKuvWLM
+
 ## Title - The Rage of the Gods. 
 A 3D First-Person-Shooter game about a wizard with magic spells trying to survive waves of enemies.
 
