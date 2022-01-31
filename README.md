@@ -1,7 +1,3 @@
-**Assignment 1 for Introduction to programming for games**
-
----
-
 ## Play it online
 https://chrima.itch.io/therageofthegods
 
